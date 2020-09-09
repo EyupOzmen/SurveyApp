@@ -1,12 +1,17 @@
-import React from 'react';
+import React,{Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import SurveyListContextProvider from './context/SurveyListContext';
+import './i18next'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<div>Loading..</div>}>
+     <SurveyListContextProvider>
+        <App />
+    </SurveyListContextProvider>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
